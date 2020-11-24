@@ -1,15 +1,11 @@
 <html>
     <head>
         <title>{{ title }} - Microblog</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
     <body>
         <h1>Hello, {{ user.msg }}!</h1>
-        <h2>The max message #: {{ max_msg }}</h2>
-        <form action="/producer" method="post"  name = "tableForm">
-            <label for="table">Message Number:</label>
-            <br>
-            <input type="number" name="num_calls">
-            <input type="submit" value="Upload">
-        </form>
+        <h2 id = "msg_num">The max message #: {{ max_msg }}</h2>
+        <h3 id = "time">The averga time of the calls for the last 10 seconds is {{avg_time}} milliseconds</h3>
     </body>
 </html>

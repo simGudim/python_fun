@@ -10,3 +10,5 @@ class Msg(db.Model):
 
     def __repr__(self):
         return '<Msg {}>'.format(self.msg_num)
+
+# db.create_all()

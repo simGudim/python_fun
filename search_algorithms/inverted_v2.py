@@ -19,7 +19,7 @@ class Indexer(object):
             directory = os.path.abspath(os.path.dirname(__file__))
             for file in os.listdir(directory):
                 if file.endswith("txt"):
-                    with open('doc1.txt', 'r') as f:
+                    with open(file, 'r') as f:
                         doc = f.read()
                         for i in doc.split('\n\n'):
                             i = re.sub(r'[^a-zA-Z0-9]+', " ", i)
@@ -27,7 +27,7 @@ class Indexer(object):
         else:
             for file in os.listdir(directory):
                 if file.endswith("txt"):
-                    with open('doc1.txt', 'r') as f:
+                    with open(file, 'r') as f:
                         doc = f.read()
                         for i in doc.split('\n\n'):
                             i = re.sub(r'[^a-zA-Z0-9]+', " ", i)
@@ -57,9 +57,6 @@ class Indexer(object):
         unique_terms = {term.lower() for doc in self.docs for term in doc.split()}
         return unique_terms
 
-
-
-
     def or_postings(self, word1, word2):
         if word1 in self.index.keys() and word2 in self.index.keys():
             post1 = self.index[word1].get("docs")
@@ -85,7 +82,7 @@ class Indexer(object):
                     if p1 != len(post1):
                         p1 += 1
 
-                if p1 == len(post1) and p2 != len(psot2):
+                if p1 == len(post1) and p2 != len(post2):
                     result.extend(post2[p2:])
 
                 if p1 != len(post1) and p2 == len(post2):
